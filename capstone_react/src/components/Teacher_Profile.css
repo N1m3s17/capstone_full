@@ -1,0 +1,76 @@
+.top_section {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.teacher_image {
+    position: absolute;
+    width: 180px;
+    height: 166px;
+
+}
+
+img {
+    border-radius: 50%;
+    width: 180px;
+    height: 166px;
+}
+
+.teacher_name {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.teacher_description {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center; 
+    padding-bottom: 20px;
+}
+
+.teacher_footer {
+    padding-top: 20px;
+}
+
+.btn-space {
+    margin-right: 15px;
+}
+
+hr.style1 {
+    border-top: 1px solid black;
+}
+
+.teacher_body {
+    padding-top: 20px;
+    text-align: left;
+}
+
+.teacher_body_header {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.teacher_body_para {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
