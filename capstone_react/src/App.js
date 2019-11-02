@@ -57,7 +57,7 @@ class App extends Component {
               path="/Search_for_tutor"
               component={Search_for_tutor}
             />
-            <Route exact path="teachers_list" component={teachers_list} />
+            <Route exact path="/teachers_list" component={teachers_list} />
           </Switch>
         </div>
       </Provider>

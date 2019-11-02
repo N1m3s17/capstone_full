@@ -33,6 +33,7 @@ export const loadTeachers = ({ best_sujbect, education }) => (
   };
 
   const body = JSON.stringify({ best_sujbect, education });
+  console.log(body);
   axios
     .get("/getTeachers", body, config)
     .then(res =>

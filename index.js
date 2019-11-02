@@ -225,6 +225,7 @@ app.get(
 //get teachers
 app.get("/getTeachers", function(req, res) {
   const { best_sujbect, education } = req.body;
+  console.log(best_sujbect, education);
   Teachers.findAll({
     where: { best_sujbect: best_sujbect, education: education }
   })

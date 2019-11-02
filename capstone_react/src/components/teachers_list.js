@@ -12,13 +12,12 @@ class teachers_list extends Component {
   };
   componentDidMount() {
     const { best_sujbect, education } = this.props.location.state;
-    console.log(best_sujbect);
     const teachers = { best_sujbect, education };
+    console.log(teachers);
     this.props.loadTeachers(teachers);
   }
   render() {
     const { teachers } = this.props.teacher;
-    console.log(teachers);
     const { isAuthenticated } = this.props.auth;
     return (
       <div className="container">
