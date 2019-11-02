@@ -1,5 +1,10 @@
 import axios from "axios";
-import { ADD_TEACHER, TEACHER_LOADED, TEACHER_LOADING } from "./types";
+import {
+  ADD_TEACHER,
+  TEACHER_LOADED,
+  TEACHER_LOADING,
+  TEACHERS_LOADED
+} from "./types";
 
 export const loadTeacher = () => (dispatch, getState) => {
   dispatch({ type: TEACHER_LOADING });
@@ -8,6 +13,31 @@ export const loadTeacher = () => (dispatch, getState) => {
     .then(res =>
       dispatch({
         type: TEACHER_LOADED,
+        payload: res.data
+      })
+    )
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const loadTeachers = ({ best_sujbect, education }) => (
+  dispatch,
+  getState
+) => {
+  dispatch({ type: TEACHER_LOADING });
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  const body = JSON.stringify({ best_sujbect, education });
+  axios
+    .get("/getTeachers", body, config)
+    .then(res =>
+      dispatch({
+        type: TEACHERS_LOADED,
         payload: res.data
       })
     )

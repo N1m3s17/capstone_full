@@ -52,7 +52,10 @@ class Navbar extends Component {
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a className="textstyles nav-link" href="#">
+                      <a
+                        className="textstyles nav-link"
+                        href="/Search_for_tutor"
+                      >
                         Search for Tutor
                       </a>
                     </li>

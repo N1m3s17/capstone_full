@@ -72,7 +72,7 @@ class Login extends Component {
                     <label className="mytext">Password:</label>
                     <br />
                     <input
-                      type="text"
+                      type="password"
                       name="password"
                       onChange={e => this.change(e)}
                       id="password"

@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { loadTeacher } from "../actions/teacherActions";
 import "bootstrap/dist/css/bootstrap.min.css";
 import profile_image from "../profile_pic.png";
 import "./Teacher_Profile.css";
 
 class Teacher_Profile extends Component {
   static propTypes = {
+    loadTeacher: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     teacher: PropTypes.object.isRequired
   };
+
+  componentDidMount() {
+    this.props.loadTeacher();
+  }
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
@@ -63,4 +69,7 @@ const mapStateToProps = state => ({
   teacher: state.teacher
 });
 
-export default connect(mapStateToProps)(Teacher_Profile);
+export default connect(
+  mapStateToProps,
+  { loadTeacher }
+)(Teacher_Profile);

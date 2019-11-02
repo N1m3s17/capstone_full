@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addTeacher } from "../actions/teacherActions";
-import { clearErrors } from "../actions/errorActions";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Create_teacher.css";
+import "./search_for_tutor.css";
 
-class Create_teacher extends Component {
-  state = {
-    bio: "",
-    education: "",
-    best_sujbect: "",
-    rate: "",
-    current_occupation: ""
-  };
+class Search_for_tutor extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      best_sujbect: "",
+      education: ""
+    };
+
+    this.change = this.change.bind(this);
+  }
 
   static propTypes = {
-    auth: PropTypes.object.isRequired,
-    error: PropTypes.object.isRequired,
-    clearErrors: PropTypes.func.isRequired
+    auth: PropTypes.object.isRequired
   };
 
   change(e) {
@@ -30,54 +29,27 @@ class Create_teacher extends Component {
   submit(e) {
     e.preventDefault();
 
-    const {
-      bio,
-      education,
-      best_sujbect,
-      rate,
-      current_occupation
-    } = this.state;
-    const teacher = {
-      bio,
-      education,
-      best_sujbect,
-      rate,
-      current_occupation
-    };
-    this.props.addTeacher(teacher);
+    const { best_sujbect, education } = this.state;
+    this.props.history.push({
+      pathname: "/teachers_list",
+      state: { best_sujbect: best_sujbect, education: education }
+    });
   }
-
   render() {
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
     return (
       <div>
         {isAuthenticated ? (
-          <div id="create-teacher">
+          <div id="search-for">
             <div className="container">
               <div
-                id="create-info-row"
+                id="search-for-row"
                 className="row justify-content-center align-items-center"
               >
-                <div id="create-teacher-column" className="col-md-6">
-                  <div id="create-teacher-box" className="col-md-12">
-                    <form
-                      id="create-teacher-form"
-                      onSubmit={e => this.submit(e)}
-                    >
-                      <h3>Create your Profile</h3>
-                      <div className="form-group">
-                        <label className="mytext">
-                          Bio:
-                          <br />
-                          <textarea
-                            name="bio"
-                            onChange={e => this.change(e)}
-                            id="bio"
-                            className="form-control"
-                            value={this.state.bio}
-                          />
-                        </label>
-                      </div>
+                <div id="search-for-column" className="col-md-6">
+                  <div id="search-for-box" className="col-md-12">
+                    <form id="search-for-form" onSubmit={e => this.submit(e)}>
+                      <h3 className="mytext text-center">Search for Tutor</h3>
                       <div className="form-group">
                         <label className="mytext">Education:</label>
                         <br />
@@ -88,9 +60,9 @@ class Create_teacher extends Component {
                           className="form-control"
                         >
                           <option value=""></option>
-                          <option value="Grad School">Grade School</option>
+                          <option value="Grade School">Grade School</option>
                           <option value="University">University</option>
-                          <option value="Post Grad">Post Grad</option>
+                          <option value="Postgrad">Post Grad</option>
                           <option value="Doctorate">Doctorate</option>
                         </select>
                       </div>
@@ -122,35 +94,12 @@ class Create_teacher extends Component {
                         </select>
                       </div>
                       <div className="form-group">
-                        <label className="mytext">Rate:</label>
-                        <br />
-                        <input
-                          type="text"
-                          value={this.state.rate}
-                          onChange={e => this.change(e)}
-                          id="rate"
-                          name="rate"
-                          className="form-control"
-                        />
-                      </div>
-                      <div className="form-group">
-                        <label className="mytext">Current Occupation:</label>
-                        <br />
-                        <input
-                          type="text"
-                          value={this.state.current_occupation}
-                          onChange={e => this.change(e)}
-                          id="current_occupation"
-                          name="current_occupation"
-                          className="form-control"
-                        />
-                      </div>
-                      <div className="form-group">
+                        <label className="mytext"></label>
                         <br />
                         <input
                           type="submit"
                           name="submit"
-                          className="create-teacher-button btn btn-md"
+                          className="search-for-button btn btn-md"
                           value="submit"
                         />
                       </div>
@@ -161,7 +110,7 @@ class Create_teacher extends Component {
             </div>
           </div>
         ) : (
-          <h1>Not Authorized</h1>
+          <h3>Not Authorized</h3>
         )}
       </div>
     );
@@ -169,11 +118,10 @@ class Create_teacher extends Component {
 }
 
 const mapStatetoProps = state => ({
-  auth: state.auth,
-  error: state.error
+  auth: state.auth
 });
 
 export default connect(
   mapStatetoProps,
-  { addTeacher, clearErrors }
-)(Create_teacher);
+  null
+)(Search_for_tutor);

@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { loadStudent } from "../actions/studentActions";
 import "bootstrap/dist/css/bootstrap.min.css";
 import profile_image from "../profile_pic.png";
 import "./Student_Profile.css";
 
 class Student_Profile extends Component {
   static propTypes = {
+    loadStudent: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     student: PropTypes.object.isRequired
   };
+
+  componentDidMount() {
+    this.props.loadStudent();
+  }
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
@@ -68,5 +74,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  null
+  { loadStudent }
 )(Student_Profile);

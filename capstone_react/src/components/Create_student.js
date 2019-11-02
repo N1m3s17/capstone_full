@@ -36,7 +36,6 @@ class Create_student extends Component {
       goal
     };
     this.props.addStudent(student);
-    this.props.history.push("/Student_Profile");
   }
 
   render() {
@@ -47,12 +46,12 @@ class Create_student extends Component {
           <div id="create">
             <div className="container">
               <div
-                id="create_info-row"
+                id="create-info-row"
                 className="row justify-content-center align-items-center"
               >
-                <div id="create_info-column" className="col-md-6">
-                  <div id="create_info-box" className="col-md-12">
-                    <form id="create_info-form" onSubmit={e => this.submit(e)}>
+                <div id="create-info-column" className="col-md-6">
+                  <div id="create-info-box" className="col-md-12">
+                    <form id="create-info-form" onSubmit={e => this.submit(e)}>
                       <h3>Create your Profile</h3>
                       <div className="form-group">
                         <label className="mytext">Bio:</label>
@@ -68,14 +67,18 @@ class Create_student extends Component {
                       <div className="form-group">
                         <label className="mytext">Education:</label>
                         <br />
-                        <input
-                          type="text"
+                        <select
                           value={this.state.education}
                           onChange={e => this.change(e)}
-                          id="education"
                           name="education"
                           className="form-control"
-                        />
+                        >
+                          <option value=""></option>
+                          <option value="Grad School">Grade School</option>
+                          <option value="University">University</option>
+                          <option value="Post Grad">Post Grad</option>
+                          <option value="Doctorate">Doctorate</option>
+                        </select>
                       </div>
                       <div className="form-group">
                         <label className="mytext">Goal:</label>
@@ -93,7 +96,7 @@ class Create_student extends Component {
                       <input
                         type="submit"
                         name="submit"
-                        className="create_infobutton btn btn-md"
+                        className="create-info-button btn btn-md"
                         value="submit"
                       />
                     </form>

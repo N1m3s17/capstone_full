@@ -1,0 +1,28 @@
+#create-teacher
+  .container
+  #create-teacher-row
+  #create-teacher-column
+  #create-teacher-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 320px;
+  border: 1px solid #9c9c9c;
+  background-color: #ff9800;
+}
+#create-teacher
+  .container
+  #create-teacher-row
+  #create-teacher-column
+  #create-teacher-box
+  #create-teacher-form {
+  padding: 20px;
+}
+
+.create-teacher-button {
+  color: white;
+  background-color: #333;
+}
+
+.mytext {
+  color: #333;
+}

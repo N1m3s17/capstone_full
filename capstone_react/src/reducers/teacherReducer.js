@@ -1,8 +1,14 @@
-import { ADD_TEACHER, TEACHER_LOADING, TEACHER_LOADED } from "../actions/types";
+import {
+  ADD_TEACHER,
+  TEACHER_LOADING,
+  TEACHER_LOADED,
+  TEACHERS_LOADED
+} from "../actions/types";
 
 const initialState = {
   isLoading: false,
-  teacher: null
+  teacher: null,
+  teachers: []
 };
 
 export default function(state = initialState, action) {
@@ -17,6 +23,12 @@ export default function(state = initialState, action) {
         ...state,
         isLoading: false,
         teacher: action.payload
+      };
+    case TEACHERS_LOADED:
+      return {
+        ...state,
+        isLoading: false,
+        teachers: action.payload
       };
     case ADD_TEACHER:
       return {

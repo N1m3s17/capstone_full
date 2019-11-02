@@ -4,8 +4,6 @@ import { Route, Switch, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/authActions";
-import { loadStudent } from "./actions/studentActions";
-import { loadTeacher } from "./actions/teacherActions";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -16,12 +14,12 @@ import Teacher_Profile from "./components/Teacher_Profile";
 import Create_student from "./components/Create_student";
 import Create_teacher from "./components/Create_teacher";
 import Create from "./components/Create";
+import Search_for_tutor from "./components/Search_for_tutor";
+import teachers_list from "./components/teachers_list";
 
 class App extends Component {
   componentDidMount() {
     store.dispatch(loadUser());
-    store.dispatch(loadStudent());
-    store.dispatch(loadTeacher());
   }
   render() {
     return (
@@ -44,8 +42,22 @@ class App extends Component {
               render={routeProps => <Teacher_Profile {...routeProps} />}
             />
             <Route exact path="/Create" component={Create} />
-            <Route exact path="/Create_student" component={Create_student} />
-            <Route exact path="/Create_teacher" component={Create_teacher} />
+            <Route
+              exact
+              path="/Create_student"
+              render={routerProps => <Create_student {...routerProps} />}
+            />
+            <Route
+              exact
+              path="/Create_teacher"
+              render={routerProps => <Create_teacher {...routerProps} />}
+            />
+            <Route
+              exact
+              path="/Search_for_tutor"
+              component={Search_for_tutor}
+            />
+            <Route exact path="teachers_list" component={teachers_list} />
           </Switch>
         </div>
       </Provider>

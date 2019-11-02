@@ -1,24 +1,23 @@
-#create .container #create-row #create-column #create-box {
+#create .container #create-info-row #create-info-column #create-info-box {
   margin-top: 120px;
   max-width: 600px;
-  height: 320px;
+  height: 500px;
   border: 1px solid #9c9c9c;
-  background-color: #eaeaea;
-}
-#create .container #create-row #create-column #create-box #create-form {
-  padding: 20px;
+  background-color: #ff9800;
 }
 #create
   .container
-  #create-row
-  #create-column
-  #create-box
-  #create-form
-  #register-link {
-  margin-top: -85px;
+  #create-info-row
+  #create-info-column
+  #create-info-box
+  #create-info-form {
+  padding: 20px;
+}
+.create-info-button {
+  color: white;
+  background-color: #333;
 }
 
-.createbutton {
-  color: white;
-  background-color: grey;
+.mytext {
+  color: #333;
 }

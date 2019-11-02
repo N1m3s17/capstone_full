@@ -222,6 +222,18 @@ app.get(
   }
 );
 
+//get teachers
+app.get("/getTeachers", function(req, res) {
+  const { best_sujbect, education } = req.body;
+  Teachers.findAll({
+    where: { best_sujbect: best_sujbect, education: education }
+  })
+    .then(teachers => res.json(teachers))
+    .catch(err => {
+      res.status(500).send("error -> " + err);
+    });
+});
+
 app.get("/", function(req, res) {
   res.json({ message: "Express is up!" });
 });
